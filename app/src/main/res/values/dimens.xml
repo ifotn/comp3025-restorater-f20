@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="heading">24sp</dimen>
+    <dimen name="marginTop">80dp</dimen>
+    <dimen name="name_width">250dp</dimen>
 </resources>

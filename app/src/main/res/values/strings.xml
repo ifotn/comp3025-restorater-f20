@@ -2,6 +2,7 @@
     <string name="app_name">RestoRater</string>
     <string name="add_restaurant">Add a New Restaurant</string>
     <string name="save">Save</string>
+    <string name="list_heading">Our Restaurants</string>
     <string-array name="ratings">
         <item>Choose Rating</item>
         <item>1</item>
