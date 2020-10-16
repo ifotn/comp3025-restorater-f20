@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "164380705959",
+    "firebase_url": "https://restorater-de45f.firebaseio.com",
+    "project_id": "restorater-de45f",
+    "storage_bucket": "restorater-de45f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164380705959:android:e32947c0fcb090e7bc4782",
+        "android_client_info": {
+          "package_name": "com.infrontofthenet.restorater"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164380705959-8doftutbt8rl86q3fsvcnhkn7s1s8t7b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDD8rwVmx8jume-j6-ogKwZ814HJeIGglE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "164380705959-8doftutbt8rl86q3fsvcnhkn7s1s8t7b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
