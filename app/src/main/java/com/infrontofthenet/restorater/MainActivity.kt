@@ -34,5 +34,9 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Incomplete", Toast.LENGTH_LONG).show()
             }
         }
+
+        listFab.setOnClickListener {
+            finish()
+        }
     }
 }

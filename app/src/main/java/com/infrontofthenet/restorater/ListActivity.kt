@@ -1,5 +1,6 @@
 package com.infrontofthenet.restorater
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -34,6 +35,15 @@ class ListActivity : AppCompatActivity() {
         val options = FirestoreRecyclerOptions.Builder<Restaurant>().setQuery(query, Restaurant::class.java).build()
         adapter = RestaurantAdapter(options)
         restaurantsRecyclerView.adapter = adapter
+
+        addFab.setOnClickListener {
+            // navigate to Main Activity to add a Restaurant
+            val intent = Intent(applicationContext, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
     }
 
     // tell adapter to start watching data for changes
@@ -69,6 +79,14 @@ class ListActivity : AppCompatActivity() {
             // populate the restaurant name & rating into the matching TextView and RatingBar for each item in the list
             holder.itemView.nameTextView.text = model.name
             holder.itemView.ratingBar.rating = model.rating!!.toFloat() // convert to float to match RatingBar.rating type
+
+            // Restaurant selection when RecyclerView item touched
+            holder.itemView.setOnClickListener {
+                val intent = Intent(applicationContext, RestaurantActivity::class.java)
+                intent.putExtra("restaurantId", model.id)
+                intent.putExtra("name", model.name)
+                startActivity(intent)
+            }
         }
     }
 }
