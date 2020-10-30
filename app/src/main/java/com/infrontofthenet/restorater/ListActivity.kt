@@ -10,8 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.item_restaurant.view.*
 
@@ -42,14 +45,29 @@ class ListActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        logoutFab.setOnClickListener {
+            // sign user out
+            FirebaseAuth.getInstance().signOut()
+            finish()
 
-
+            // reload Signin so providers reinitialized
+            val intent = Intent(applicationContext, SignInActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     // tell adapter to start watching data for changes
     override fun onStart() {
         super.onStart()
         adapter!!.startListening()
+
+        // check user is signed in
+        val user = Firebase.auth.currentUser
+        if (user == null) {
+            // reload Signin so providers reinitialized
+            val intent = Intent(applicationContext, SignInActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onStop() {
