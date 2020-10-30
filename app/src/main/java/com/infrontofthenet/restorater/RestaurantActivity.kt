@@ -6,7 +6,9 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
@@ -18,12 +20,12 @@ class RestaurantActivity : AppCompatActivity() {
 
     var db = FirebaseFirestore.getInstance().collection("comments")
 
-    // adapter class to store and bind data
+    // instantiate adapter class to store and bind data
+    private var adapter: RestaurantActivity.CommentsAdapter? = null
 
     // create inner classes for adapter and viewholder
     private inner class CommentsViewHolder internal constructor(private val view: View) :
     RecyclerView.ViewHolder(view) {
-
     }
 
     private inner class CommentsAdapter internal constructor(options: FirestoreRecyclerOptions<Comment>) :
@@ -68,5 +70,31 @@ class RestaurantActivity : AppCompatActivity() {
                 Toast.makeText(this, "Incomplete", Toast.LENGTH_LONG).show()
             }
         }
+
+        // section for querying Firestore for existing comments for the selected restaurant
+        // set RecyclerView to use LinearLayout
+        commentsRecyclerView.layoutManager = LinearLayoutManager(this)
+
+        // query Firestore
+        val query = db.whereEqualTo("restaurantId", intent.getStringExtra("restaurantId"))
+
+        // pass the query results to adapter for display, casting each result as a Comment object
+        val options = FirestoreRecyclerOptions.Builder<Comment>().setQuery(query, Comment::class.java).build()
+        adapter = CommentsAdapter(options)
+
+        // bind the Comments adapter to the RecyclerView
+        commentsRecyclerView.adapter = adapter
+    }
+
+    // listen for changes to the underlying data
+    override fun onStart() {
+        super.onStart()
+        adapter!!.startListening()
+    }
+
+    // stop listening when activity is stopped (as another activity will be visible over top)
+    override fun onStop() {
+        super.onStop()
+        adapter!!.stopListening()
     }
 }
