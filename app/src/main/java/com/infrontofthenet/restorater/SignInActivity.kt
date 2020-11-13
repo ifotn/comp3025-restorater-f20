@@ -43,7 +43,7 @@ class SignInActivity : AppCompatActivity() {
                 // Successfully signed in
                 val user = FirebaseAuth.getInstance().currentUser
                 // send to list activity
-                val intent = Intent(applicationContext, ProfileActivity::class.java)
+                val intent = Intent(applicationContext, ListActivity::class.java)
                 startActivity(intent)
             } else {
                 // Sign in failed. If response is null the user canceled the
