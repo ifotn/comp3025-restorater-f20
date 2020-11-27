@@ -1,4 +1,5 @@
 package com.infrontofthenet.restorater
+// you can use gcxxxxxxxxx (where x is your student #) as your refactored package name
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
