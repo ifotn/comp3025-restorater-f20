@@ -1,5 +1,6 @@
 package com.infrontofthenet.restorater
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -84,6 +85,13 @@ class RestaurantActivity : AppCompatActivity() {
 
         // bind the Comments adapter to the RecyclerView
         commentsRecyclerView.adapter = adapter
+
+        // load the maps activity and pass in the restaurant name
+        mapFab.setOnClickListener {
+            val intent = Intent(applicationContext, MapsActivity::class.java)
+            intent.putExtra("name", restaurantNameTextView.text.toString() + ", Barrie, ON, Canada")
+            startActivity(intent)
+        }
     }
 
     // listen for changes to the underlying data

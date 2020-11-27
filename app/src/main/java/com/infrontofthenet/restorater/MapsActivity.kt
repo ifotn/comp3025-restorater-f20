@@ -4,6 +4,7 @@ import android.content.Context
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -12,6 +13,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_maps.*
 
 
@@ -36,6 +38,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 placeMarkerOnMap(location)
             }
         }
+
+        // check the extras for a restaurant name, if 1 is found display it in the search box
+        val name = intent.getStringExtra("name")
+        addressEditText.setText(name)
+//        if (!TextUtils.isEmpty(name)) {
+//            var location = getLocationFromAddress(this, addressEditText.text.toString())
+//
+//            // create a new marker on the google map at this location
+//            if (location != null) {
+//                placeMarkerOnMap(location)
+//            }
+//            //searchButton.callOnClick()
+//        }
     }
 
     // create function to accept a location and create a marker on the map
