@@ -15,6 +15,30 @@
       },
       "oauth_client": [
         {
+          "client_id": "164380705959-0c94q5h5s599nkobnks7g4t5sarlqau7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.infrontofthenet.restorater",
+            "certificate_hash": "eb617df09c7a78cc82bad20aeb130c2289a6b39f"
+          }
+        },
+        {
+          "client_id": "164380705959-399h6n0dpkdq2avn4ln5fbeg079vh1ou.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.infrontofthenet.restorater",
+            "certificate_hash": "72c6adabb504aeed7647c228f14d1c57376ac1ce"
+          }
+        },
+        {
+          "client_id": "164380705959-5hicrdg9igjd6jk43v8al3at8jr3gcs5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.infrontofthenet.restorater",
+            "certificate_hash": "62056370aec3366a8b2fde01da0ce5d22e2d584e"
+          }
+        },
+        {
           "client_id": "164380705959-8doftutbt8rl86q3fsvcnhkn7s1s8t7b.apps.googleusercontent.com",
           "client_type": 3
         }
