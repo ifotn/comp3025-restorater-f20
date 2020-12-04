@@ -23,6 +23,7 @@ import com.google.firebase.auth.UserProfileChangeRequest
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 import java.io.File
+import java.io.FileInputStream
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -42,6 +43,13 @@ class ProfileActivity : AppCompatActivity() {
         if (authDb.currentUser != null) {
             nameTextView.text = authDb.currentUser!!.displayName
             emailTextView.text = authDb.currentUser!!.email
+
+            // display photoUrl if any
+            var profilePhoto: Uri? = authDb.currentUser!!.photoUrl
+
+            if (profilePhoto != null) {
+                profilePhoto.path?.let { loadProfileImage(it) }
+            }
         }
         else {
             logout()
@@ -134,6 +142,17 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    // load profile image if any
+    private fun loadProfileImage(path: String) {
+        var file: File = File(path)
+
+        // convert to bitmap
+        var bitmapImage = BitmapFactory.decodeStream(FileInputStream(file))
+
+        // display in Image View
+        profileImageView.setImageBitmap(bitmapImage)
     }
 
     // 2 overrides to display menu & handle its actions
